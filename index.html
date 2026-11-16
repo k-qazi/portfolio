@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaleemullah Qazi – Instructional Designer</title>
+<meta name="description" content="Instructional design portfolio: interactive eLearning built with Articulate Storyline and Rise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f7fb; --surface:#ffffff; --ink:#16213a; --muted:#56627a;
+  --line:#d5dcea; --accent:#1b5fd1; --accent-ink:#ffffff;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1626; --surface:#17213a; --ink:#e8edf8; --muted:#a2aec6; --line:#2a3858; --accent:#6ea2ff; --accent-ink:#0f1626;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{padding:72px 0 40px}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+.lede{max-width:56ch;color:var(--muted);margin:0 0 24px}
+.contact a{margin-right:20px}
+h2{font-size:1.4rem;margin:56px 0 8px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;margin:20px 0}
+.project h3{margin:0 0 4px;font-size:1.3rem}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 12px}
+.project p{margin:0 0 12px;max-width:62ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+button,.btn{font:inherit;font-weight:700;padding:10px 18px;border-radius:6px;border:2px solid var(--accent);cursor:pointer;text-decoration:none;display:inline-block}
+.primary{background:var(--accent);color:var(--accent-ink)}
+.secondary{background:transparent;color:var(--accent)}
+.player{display:none;margin-top:20px}
+.player.open{display:block}
+.player iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;background:#fff}
+.player small{display:block;margin-top:8px;color:var(--muted)}
+.about p{max-width:62ch}
+footer{margin:64px 0 40px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Kaleemullah Qazi<br>Instructional Designer</h1>
+  <p class="lede">I design interactive training that helps people do their jobs better. Below are samples you can play right in this page.</p>
+  <p class="contact">
+    <a href="mailto:qazikaleemullah@outlook.com">qazikaleemullah@outlook.com</a>
+    <a href="https://www.linkedin.com/in/kaleemullahkk/">LinkedIn</a>
+  </p>
+</header>
+
+<main>
+  <h2>Selected work</h2>
+
+  <!-- PROJECT 1: copy this whole block for each course -->
+  <article class="project">
+    <h3>Course title one</h3>
+    <p class="meta">Articulate Storyline 360 · New hires · 15 minutes</p>
+    <p><strong>Problem:</strong> Describe the training need in one sentence.</p>
+    <p><strong>Solution:</strong> Describe what you built and the design choices you made.</p>
+    <p><strong>Result:</strong> Add an outcome, or say "Portfolio sample" if it's not from a real client.</p>
+    <div class="actions">
+      <button class="primary" type="button" data-src="courses/course-1/story.html" aria-expanded="false">Preview course</button>
+      <a class="btn secondary" href="courses/course-1/story.html" target="_blank" rel="noopener">Open full screen</a>
+      <a class="btn secondary" href="courses/course-1.zip" download>Download SCORM package</a>
+    </div>
+    <div class="player"></div>
+  </article>
+
+  <!-- PROJECT 2 -->
+  <article class="project">
+    <h3>Course title two</h3>
+    <p class="meta">Articulate Rise 360 · Managers · 20 minutes</p>
+    <p><strong>Problem:</strong> Describe the training need in one sentence.</p>
+    <p><strong>Solution:</strong> Describe what you built and the design choices you made.</p>
+    <p><strong>Result:</strong> Add an outcome, or say "Portfolio sample".</p>
+    <div class="actions">
+      <button class="primary" type="button" data-src="courses/course-2/index.html" aria-expanded="false">Preview course</button>
+      <a class="btn secondary" href="courses/course-2/index.html" target="_blank" rel="noopener">Open full screen</a>
+    </div>
+    <div class="player"></div>
+  </article>
+
+  <h2>About</h2>
+  <div class="about">
+    <p>Write two or three sentences about your background, the tools you use (Storyline, Rise, Vyond, Camtasia), and the kinds of learning problems you like to solve.</p>
+  </div>
+</main>
+
+<footer>© <span id="yr"></span> Kaleemullah Qazi</footer>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.querySelectorAll('.project').forEach(function(card){
+  var btn = card.querySelector('button[data-src]');
+  var player = card.querySelector('.player');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var open = player.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? 'Close preview' : 'Preview course';
+    if(open && !player.firstChild){
+      var f = document.createElement('iframe');
+      f.src = btn.dataset.src;
+      f.title = card.querySelector('h3').textContent + ' course preview';
+      f.allowFullscreen = true;
+      player.appendChild(f);
+      var s = document.createElement('small');
+      s.textContent = 'Course not showing? Use "Open full screen" instead.';
+      player.appendChild(s);
+    }
+  });
+});
+</script>
+</body>
+</html>
