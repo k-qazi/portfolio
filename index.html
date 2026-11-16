@@ -3,104 +3,257 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kaleemullah Qazi – Instructional Designer</title>
-<meta name="description" content="Instructional design portfolio: interactive eLearning built with Articulate Storyline and Rise.">
+<title>Kaleemullah Qazi – Instructional Designer &amp; eLearning Developer</title>
+<meta name="description" content="Gamified, interactive eLearning that turns dense compliance content into training people actually finish.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4f7fb; --surface:#ffffff; --ink:#16213a; --muted:#56627a;
-  --line:#d5dcea; --accent:#1b5fd1; --accent-ink:#ffffff;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#0f1626; --surface:#17213a; --ink:#e8edf8; --muted:#a2aec6; --line:#2a3858; --accent:#6ea2ff; --accent-ink:#0f1626;}
+  --navy:#071a3d; --blue-900:#0b2a63; --blue-700:#1546b5; --blue-500:#2f6fe4;
+  --blue-300:#7fb0ff; --blue-100:#e6f0ff; --paper:#f5f9ff; --ink:#0c1a33; --muted:#4a5b7a; --line:#cfdcf2;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px}
-header{padding:72px 0 40px}
-h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
-.lede{max-width:56ch;color:var(--muted);margin:0 0 24px}
-.contact a{margin-right:20px}
-h2{font-size:1.4rem;margin:56px 0 8px}
-.project{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;margin:20px 0}
-.project h3{margin:0 0 4px;font-size:1.3rem}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.65 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--blue-700)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue-300);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--blue-900);margin-bottom:12px}
+.sub{color:var(--muted);max-width:58ch;margin:0 0 32px}
+
+/* progress bar and level badge */
+#xp{position:fixed;top:0;left:0;height:5px;width:0;background:linear-gradient(90deg,var(--blue-300),var(--blue-500));z-index:20}
+#lvl{position:fixed;left:16px;bottom:16px;z-index:20;background:var(--navy);color:#fff;font-size:.85rem;font-weight:700;padding:6px 14px;border-radius:99px;border:1px solid var(--blue-500)}
+
+/* buttons */
+.btn{font:inherit;font-weight:700;padding:12px 22px;border-radius:8px;border:2px solid var(--blue-500);cursor:pointer;text-decoration:none;display:inline-block;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--blue-500);color:#fff}
+.btn.ghost{background:transparent;color:var(--blue-700)}
+.hero .btn.ghost{color:#fff;border-color:var(--blue-300)}
+
+/* hero */
+.hero{background:radial-gradient(900px 500px at 85% 20%,#14409a 0%,transparent 60%),var(--navy);color:#fff;padding:88px 0 96px}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4rem);font-weight:800;letter-spacing:-.025em;margin-bottom:20px}
+.hero .name{color:var(--blue-300);font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.2rem;margin:0 0 14px}
+.hero p.lead{color:#c9d9f5;max-width:52ch;margin:0 0 28px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px}
+.photo{position:relative;width:min(100%,340px);aspect-ratio:1;margin-inline:auto;border-radius:36% 64% 58% 42%/42% 40% 60% 58%;overflow:hidden;background:linear-gradient(135deg,var(--blue-500),var(--blue-900));border:3px solid var(--blue-300);display:grid;place-items:center;font:800 5rem "Bricolage Grotesque",sans-serif;color:#fff}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* carousel */
+.carousel{position:relative}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:16px}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;position:relative;aspect-ratio:16/9;margin:0;border-radius:16px;overflow:hidden;color:#fff;display:grid;place-items:center;text-align:center;padding:24px}
+.slide:nth-child(1){background:linear-gradient(135deg,#0b2a63,#2f6fe4)}
+.slide:nth-child(2){background:linear-gradient(135deg,#071a3d,#1546b5)}
+.slide:nth-child(3){background:linear-gradient(135deg,#1546b5,#7fb0ff)}
+.slide:nth-child(4){background:linear-gradient(135deg,#0b2a63,#38a0f0)}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide .hint{font-size:.95rem;opacity:.85}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 24px 18px;background:linear-gradient(transparent,rgba(7,26,61,.88));text-align:left;font-weight:700}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--blue-900);font-size:1.4rem;cursor:pointer;box-shadow:0 4px 14px rgba(7,26,61,.3);z-index:2}
+.nav.prev{left:12px}.nav.next{right:12px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0}
+.dots button.on{background:var(--blue-500);width:30px;border-radius:8px}
+
+/* projects */
+.project{background:#fff;border:1px solid var(--line);border-left:6px solid var(--blue-500);border-radius:12px;padding:26px;margin:20px 0}
+.project h3{font-size:1.4rem;color:var(--blue-900);margin-bottom:4px}
 .meta{color:var(--muted);font-size:.95rem;margin:0 0 12px}
-.project p{margin:0 0 12px;max-width:62ch}
+.project p{margin:0 0 10px;max-width:64ch}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-button,.btn{font:inherit;font-weight:700;padding:10px 18px;border-radius:6px;border:2px solid var(--accent);cursor:pointer;text-decoration:none;display:inline-block}
-.primary{background:var(--accent);color:var(--accent-ink)}
-.secondary{background:transparent;color:var(--accent)}
+.soon-tag{display:none;margin-top:14px;font-weight:700;color:var(--blue-700);background:var(--blue-100);padding:6px 14px;border-radius:99px;width:fit-content}
+.project[data-status="soon"] .actions{display:none}
+.project[data-status="soon"] .soon-tag{display:block}
 .player{display:none;margin-top:20px}
 .player.open{display:block}
-.player iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;background:#fff}
+.player iframe{width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:8px;background:#fff}
 .player small{display:block;margin-top:8px;color:var(--muted)}
-.about p{max-width:62ch}
-footer{margin:64px 0 40px;color:var(--muted);font-size:.9rem}
+.note{background:var(--blue-100);border-radius:12px;padding:22px 26px;margin-top:28px;max-width:70ch}
+.note h3{font-size:1.15rem;color:var(--blue-900);margin-bottom:6px}
+.note p{margin:0}
+
+/* about */
+.about{background:var(--blue-100)}
+.about .wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;align-items:center}
+.about .photo{width:min(100%,300px);border-radius:24px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0}
+.chips span{background:#fff;border:1px solid var(--line);color:var(--blue-900);padding:6px 14px;border-radius:99px;font-size:.95rem}
+h3.small{font-size:1.1rem;color:var(--blue-900);margin:22px 0 8px}
+
+/* contact */
+.contact{background:var(--navy);color:#fff;text-align:center}
+.contact h2{color:#fff}
+.contact .sub{margin-inline:auto;color:#c9d9f5}
+.contact .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.contact .btn.ghost{color:#fff;border-color:var(--blue-300)}
+footer{background:var(--navy);color:#8ea6d1;text-align:center;font-size:.9rem;padding:0 0 40px}
+
+@media (max-width:760px){
+  .hero .wrap,.about .wrap{grid-template-columns:1fr}
+  .hero{padding:56px 0 64px}
+  .photo{order:-1;width:min(70%,240px)}
+  .nav{width:38px;height:38px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div id="xp" aria-hidden="true"></div>
+<div id="lvl" aria-hidden="true">Level 1</div>
 
-<header>
-  <h1>Kaleemullah Qazi<br>Instructional Designer</h1>
-  <p class="lede">I design interactive training that helps people do their jobs better. Below are samples you can play right in this page.</p>
-  <p class="contact">
-    <a href="mailto:qazikaleemullah@outlook.com">qazikaleemullah@outlook.com</a>
-    <a href="https://www.linkedin.com/in/kaleemullahkk/">LinkedIn</a>
-  </p>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="name">Kaleemullah Qazi · Instructional Designer</p>
+      <h1>Compliance training people finish, and enjoy.</h1>
+      <p class="lead">I turn dense compliance content into interactive, gamified learning, so training feels like a challenge worth taking and not one more task on the to-do list.</p>
+      <div class="cta">
+        <a class="btn solid" href="#work">View my work</a>
+        <a class="btn ghost" href="Kaleemullah-Qazi-Resume.pdf" download>Download resume</a>
+      </div>
+    </div>
+    <div class="photo" aria-hidden="true">KQ<img src="images/kaleemullah.jpg" alt="" onerror="this.remove()"></div>
+  </div>
 </header>
 
 <main>
-  <h2>Selected work</h2>
-
-  <!-- PROJECT 1: copy this whole block for each course -->
-  <article class="project">
-    <h3>Course title one</h3>
-    <p class="meta">Articulate Storyline 360 · New hires · 15 minutes</p>
-    <p><strong>Problem:</strong> Describe the training need in one sentence.</p>
-    <p><strong>Solution:</strong> Describe what you built and the design choices you made.</p>
-    <p><strong>Result:</strong> Add an outcome, or say "Portfolio sample" if it's not from a real client.</p>
-    <div class="actions">
-      <button class="primary" type="button" data-src="courses/course-1/story.html" aria-expanded="false">Preview course</button>
-      <a class="btn secondary" href="courses/course-1/story.html" target="_blank" rel="noopener">Open full screen</a>
-      <a class="btn secondary" href="courses/course-1.zip" download>Download SCORM package</a>
+<section id="work">
+  <div class="wrap">
+    <h2>A look at the learning experience</h2>
+    <p class="sub">Screens from the courses and interactions I design and build.</p>
+    <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Course screenshots">
+      <button class="nav prev" type="button" aria-label="Previous slide">‹</button>
+      <div class="track">
+        <figure class="slide"><img src="images/slide-1.jpg" alt="New joiner orientation course" onerror="this.remove()"><span class="hint">Add your screenshot: images/slide-1.jpg</span><figcaption>Orientation for new joiners</figcaption></figure>
+        <figure class="slide"><img src="images/slide-2.jpg" alt="Gamified knowledge check" onerror="this.remove()"><span class="hint">Add your screenshot: images/slide-2.jpg</span><figcaption>Gamified knowledge check</figcaption></figure>
+        <figure class="slide"><img src="images/slide-3.jpg" alt="Interactive scenario" onerror="this.remove()"><span class="hint">Add your screenshot: images/slide-3.jpg</span><figcaption>Interactive scenario</figcaption></figure>
+        <figure class="slide"><img src="images/slide-4.jpg" alt="Animated explainer video" onerror="this.remove()"><span class="hint">Add your screenshot: images/slide-4.jpg</span><figcaption>Video and animation</figcaption></figure>
+      </div>
+      <button class="nav next" type="button" aria-label="Next slide">›</button>
+      <div class="dots"></div>
     </div>
-    <div class="player"></div>
-  </article>
-
-  <!-- PROJECT 2 -->
-  <article class="project">
-    <h3>Course title two</h3>
-    <p class="meta">Articulate Rise 360 · Managers · 20 minutes</p>
-    <p><strong>Problem:</strong> Describe the training need in one sentence.</p>
-    <p><strong>Solution:</strong> Describe what you built and the design choices you made.</p>
-    <p><strong>Result:</strong> Add an outcome, or say "Portfolio sample".</p>
-    <div class="actions">
-      <button class="primary" type="button" data-src="courses/course-2/index.html" aria-expanded="false">Preview course</button>
-      <a class="btn secondary" href="courses/course-2/index.html" target="_blank" rel="noopener">Open full screen</a>
-    </div>
-    <div class="player"></div>
-  </article>
-
-  <h2>About</h2>
-  <div class="about">
-    <p>Write two or three sentences about your background, the tools you use (Storyline, Rise, Vyond, Camtasia), and the kinds of learning problems you like to solve.</p>
   </div>
-</main>
+</section>
 
+<section id="projects" style="padding-top:0">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="sub">Open any course here and play it as a learner would.</p>
+
+    <!-- To make a project live: delete data-status="soon" from its article -->
+    <article class="project" data-status="soon">
+      <h3>Orientation for new joiners</h3>
+      <p class="meta">Articulate Storyline 360 · New employees</p>
+      <p><strong>Problem:</strong> New joiners faced a flood of policies and information in their first week.</p>
+      <p><strong>Solution:</strong> A guided, interactive orientation that spreads the content into short, hands-on moments.</p>
+      <p class="soon-tag">Coming soon</p>
+      <div class="actions">
+        <button class="btn solid" type="button" data-src="courses/orientation/story.html" aria-expanded="false">Preview course</button>
+        <a class="btn ghost" href="courses/orientation/story.html" target="_blank" rel="noopener">Open full screen</a>
+      </div>
+      <div class="player"></div>
+    </article>
+
+    <article class="project" data-status="soon">
+      <h3>Gamification and interaction samples</h3>
+      <p class="meta">Articulate Storyline 360 · Short demos</p>
+      <p><strong>Problem:</strong> Standard click-next courses lose learners’ attention.</p>
+      <p><strong>Solution:</strong> Small demos of points, challenges, branching and drag-and-drop that can slot into any course.</p>
+      <p class="soon-tag">Coming soon</p>
+      <div class="actions">
+        <button class="btn solid" type="button" data-src="courses/samples/story.html" aria-expanded="false">Preview samples</button>
+        <a class="btn ghost" href="courses/samples/story.html" target="_blank" rel="noopener">Open full screen</a>
+      </div>
+      <div class="player"></div>
+    </article>
+
+    <div class="note">
+      <h3>More work, shared on request</h3>
+      <p>Most of my client projects are confidential, so I can’t show them publicly. I’m happy to walk you through them, with sensitive details removed, in an interview or a call.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="photo" aria-hidden="true">KQ<img src="images/kaleemullah.jpg" alt="" onerror="this.remove()"></div>
+    <div>
+      <h2>About me</h2>
+      <p>I’m an instructional designer and end-to-end eLearning developer with a Bachelor’s degree in Psychology. That background helps me design for how people think, learn and stay motivated. I’ve built eLearning courses, videos and interactive games for students and professionals, always looking for ways to make training more effective, accessible and enjoyable.</p>
+      <h3 class="small">Authoring</h3>
+      <div class="chips"><span>Articulate Storyline</span><span>Articulate Rise</span></div>
+      <h3 class="small">Video and motion</h3>
+      <div class="chips"><span>Camtasia</span><span>Vyond</span><span>Adobe After Effects</span></div>
+      <h3 class="small">Graphics</h3>
+      <div class="chips"><span>Canva</span><span>Adobe Illustrator</span><span>Adobe Firefly</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let’s make learning worth finishing</h2>
+    <p class="sub">Have a training challenge, or want to talk about a role? I’d love to hear from you.</p>
+    <div class="cta">
+      <a class="btn solid" href="mailto:qazikaleemullah@outlook.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/kaleemullahkk/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="Kaleemullah-Qazi-Resume.pdf" download>Download resume</a>
+    </div>
+  </div>
+</section>
+</main>
 <footer>© <span id="yr"></span> Kaleemullah Qazi</footer>
-</div>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+// scroll progress + level badge
+var xp = document.getElementById('xp'), lvl = document.getElementById('lvl');
+function onScroll(){
+  var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+  var p = max > 0 ? h.scrollTop / max : 0;
+  xp.style.width = (p * 100) + '%';
+  lvl.textContent = 'Level ' + (Math.min(4, Math.floor(p * 5)) + 1) + (p > .98 ? ' · Complete!' : '');
+}
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+// carousel
+(function(){
+  var track = document.querySelector('.track'), slides = track.children, dots = document.querySelector('.dots');
+  for(var i = 0; i < slides.length; i++){
+    (function(i){
+      var b = document.createElement('button');
+      b.type = 'button'; b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.onclick = function(){ track.scrollTo({left: slides[i].offsetLeft - track.offsetLeft, behavior:'smooth'}); };
+      dots.appendChild(b);
+    })(i);
+  }
+  function update(){
+    var i = Math.round(track.scrollLeft / (slides[0].offsetWidth + 16));
+    Array.prototype.forEach.call(dots.children, function(d, k){ d.className = k === i ? 'on' : ''; });
+  }
+  track.addEventListener('scroll', update, {passive:true}); update();
+  function step(dir){
+    var w = slides[0].offsetWidth + 16, max = track.scrollWidth - track.clientWidth;
+    var next = track.scrollLeft + dir * w;
+    if(next > max + 4) next = 0; if(next < -4) next = max;
+    track.scrollTo({left: next, behavior:'smooth'});
+  }
+  document.querySelector('.prev').onclick = function(){ step(-1); };
+  document.querySelector('.next').onclick = function(){ step(1); };
+})();
+
+// in-page course preview
 document.querySelectorAll('.project').forEach(function(card){
-  var btn = card.querySelector('button[data-src]');
-  var player = card.querySelector('.player');
+  var btn = card.querySelector('button[data-src]'), player = card.querySelector('.player');
   if(!btn) return;
   btn.addEventListener('click', function(){
     var open = player.classList.toggle('open');
@@ -108,12 +261,10 @@ document.querySelectorAll('.project').forEach(function(card){
     btn.textContent = open ? 'Close preview' : 'Preview course';
     if(open && !player.firstChild){
       var f = document.createElement('iframe');
-      f.src = btn.dataset.src;
-      f.title = card.querySelector('h3').textContent + ' course preview';
-      f.allowFullscreen = true;
+      f.src = btn.dataset.src; f.title = card.querySelector('h3').textContent + ' preview'; f.allowFullscreen = true;
       player.appendChild(f);
       var s = document.createElement('small');
-      s.textContent = 'Course not showing? Use "Open full screen" instead.';
+      s.textContent = 'Course not showing? Use “Open full screen” instead.';
       player.appendChild(s);
     }
   });
